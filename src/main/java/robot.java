@@ -1,13 +1,12 @@
 class Robot {
 	byte direction;
 	private boolean penIsDown;
-	int[] coordinates;
+	int[] coordinates = {0,0};
 	boolean[][] boardState;
 
 	public Robot(int n) {
 		this.direction = 0;
 		this.penIsDown = false;
-		this.coordinates = new int[2];
 		this.boardState = new boolean[n][n];
 	}
 	// Command U|u
@@ -92,24 +91,26 @@ class Robot {
 	// Command P|p
 	void printBoard() {
 		for(int i = 0; i < this.boardState.length; i++) {
-			for(int j = this.boardState.length - 1; j > 0; j--) {
-				System.out.print(i + "\t");
-				if (this.boardState[i][j]) {
-					System.out.print("*");
-				} else {
-					System.out.print(" ");
+			for(int j = 0; j < this.boardState.length; j++) {
+				//System.out.print(i + "\t");
+				if(this.coordinates[0] == i && this.coordinates[1] == j){
+					if (this.direction == 0) {
+						System.out.print("N" + '\t');
+					} else if (this.direction == 1) {
+						System.out.print("E"+ '\t');
+					} else if (this.direction == 2) {
+						System.out.print("S"+ '\t');
+					} else if (this.direction == 3) {
+						System.out.print("W"+ '\t');
+					}
 				}
-				if (j < (this.boardState.length - 1)) {
-					System.out.print("\t");
+				else if (this.boardState[i][j]) {
+					System.out.print("*"+ '\t');
+				} else {
+					System.out.print("."+ '\t');
 				}
 			}
 			System.out.print("\n");
-		}
-		for (int j = 0; j < this.boardState.length ; j++) {
-			System.out.print(j);
-			if (j < (this.boardState.length - 1)) {
-				System.out.print("\t");
-			}
 		}
 	}
 
