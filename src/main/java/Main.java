@@ -28,13 +28,18 @@ public class Main {
         }while(condition || (size < 1 || size > 1000));
 
         Robot robot = new Robot(size); //Create robot object with the size parameter for board size
-        System.out.println("PASSED");
+        System.out.println("Here is the list of possible commands.\n" +
+                "U or u to lift the pen.\n" + "D or d to set down the pen.\n" + "R or r to turn right.\n"
+                + "L or l to turn left.\n" + "M x or m x where x is an integer for the amount of squares to move." +
+                "It must be positive.\n" + "P or p to print the current board.\n" +
+                "C or c to print the current state of the robot.\n" +
+                "Q or q to exit the program.\n" + "I x or i x to reinitialize the robot where x > 0 and x < 1000.\n");
         //case statement with different commands inside a while loop, Q flag for exit which is the boolean
         int parameter = 0;
         while(true){
             //enter a command, command wil be used for switch
             Arrays.fill(userInputSplit, null);
-            System.out.println("Enter a command please. Here is the list of possible commands.");
+            System.out.println("Please enter a command.");
 
             String cmdInput = scanner.nextLine();
             userInputSplit = cmdInput.split(" ");

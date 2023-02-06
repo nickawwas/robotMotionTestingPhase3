@@ -98,13 +98,13 @@ class Robot {
 				//System.out.print(i + "\t");
 				if(this.coordinates[0] == i && this.coordinates[1] == j){
 					if (this.direction == 0) {
-						System.out.print("N" + '\t');
+						System.out.print("↑" + '\t');
 					} else if (this.direction == 1) {
-						System.out.print("E"+ '\t');
+						System.out.print("→"+ '\t');
 					} else if (this.direction == 2) {
-						System.out.print("S"+ '\t');
+						System.out.print("↓"+ '\t');
 					} else if (this.direction == 3) {
-						System.out.print("W"+ '\t');
+						System.out.print("←"+ '\t');
 					}
 				}
 				else if (this.boardState[i][j]) {
