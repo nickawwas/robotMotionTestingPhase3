@@ -1,8 +1,8 @@
 class Robot {
-	byte direction;
+	private byte direction;
 	private boolean penIsDown;
-	int[] coordinates = {0,0};
-	boolean[][] boardState;
+	private int[] coordinates = {0,0};
+	private boolean[][] boardState;
 
 	public Robot(int n) {
 		this.direction = 0;
@@ -17,6 +17,9 @@ class Robot {
 	public void setPenDown() {
 		this.penIsDown = true;
 		markBoard();
+	}
+	public boolean getPenIsDown(){
+		return this.penIsDown;
 	}
 	/* A bit hard to explain, but essentially, we just need a 2-bit unsigned
 	 * number to represent the direction of the robot.
@@ -90,7 +93,7 @@ class Robot {
 
 	// Command P|p
 	void printBoard() {
-		for(int i = 0; i < this.boardState.length; i++) {
+		for(int i = this.boardState.length - 1; i >= 0; i--) {
 			for(int j = 0; j < this.boardState.length; j++) {
 				//System.out.print(i + "\t");
 				if(this.coordinates[0] == i && this.coordinates[1] == j){
@@ -117,21 +120,21 @@ class Robot {
 	// Command C|c
 	// Not sure if this will work or not to be honest
 	public void currentStateOfTheRobot() {
-		System.out.print("Position: " + this.coordinates[0] + ", " + this.coordinates[1] + " - Pen: ");
+		System.out.print("Position: " + this.coordinates[1] + ", " + this.coordinates[0] + " - Pen: ");
 		if (this.penIsDown) {
-			System.out.print("down");
+			System.out.print("Down");
 		} else {
-			System.out.print("up");
+			System.out.print("Up");
 		}
 		System.out.print(" - Facing: ");
 		if (this.direction == 0) {
-			System.out.println("north");
+			System.out.println("North");
 		} else if (this.direction == 1) {
-			System.out.println("east");
+			System.out.println("East");
 		} else if (this.direction == 2) {
-			System.out.println("south");
+			System.out.println("South");
 		} else if (this.direction == 3) {
-			System.out.println("west");
+			System.out.println("West");
 		}
 	}
 

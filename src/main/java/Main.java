@@ -2,25 +2,30 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
         System.out.println("Welcome to the Pen Robot Simulation Program");
 
-        int size;
+        int size = 0;
+        boolean condition;
         String[] userInputSplit;
         String command;
+        Scanner scanner = new Scanner(System.in);
         //Initialize robot and board
 
         do {
             System.out.println("Please enter the following command to initialize the Robot: I x, where x is an integer" +
                     " greater than 0 and smaller than 1000.");
-            Scanner scanner = new Scanner(System.in);
+
             String userInput = scanner.nextLine();
             userInputSplit = userInput.split(" ");
             command = userInputSplit[0];
-            size = Integer.parseInt(userInputSplit[1]);
+            if(userInputSplit.length > 1){
+                size = Integer.parseInt(userInputSplit[1]); //used for movement or initialize
+            }
+            condition = (!Objects.equals(command, "I")) && !Objects.equals(command, "i");
 
-        }while((!Objects.equals(command, "I") || !Objects.equals(command, "i")) && (size < 1 || size > 1000));
+        }while(condition || (size < 1 || size > 1000));
 
         Robot robot = new Robot(size); //Create robot object with the size parameter for board size
         System.out.println("PASSED");
@@ -31,8 +36,7 @@ public class Main {
             Arrays.fill(userInputSplit, null);
             System.out.println("Enter a command please. Here is the list of possible commands.");
 
-            Scanner cmdScanner = new Scanner(System.in);
-            String cmdInput = cmdScanner.nextLine();
+            String cmdInput = scanner.nextLine();
             userInputSplit = cmdInput.split(" ");
             command = userInputSplit[0];
             if(userInputSplit.length > 1){
@@ -41,23 +45,48 @@ public class Main {
 
             switch (command) {
                 //pen up
-                case "U", "u" -> robot.setPenUp();
+                case "U", "u" -> {
+                    if(!robot.getPenIsDown()){
+                        System.out.println("Robot pen is already up.");
+                        break;
+                    }
+                    robot.setPenUp();
+                    System.out.println("Robot pen is now up.");
+                }
 
                 //pen down
-                case "D", "d" -> robot.setPenDown();
+                case "D", "d" -> {
+                    if(robot.getPenIsDown()){
+                        System.out.println("Robot pen is already down.");
+                        break;
+                    }
+                    robot.setPenDown();
+                    System.out.println("Robot pen is now down.");
+                }
 
                 //turn right
-                case "R", "r" -> robot.turnRight();
+                case "R", "r" -> {
+                    robot.turnRight();
+                    System.out.println("Robot has rotated to the right.");
+                }
 
                 //turn left
-                case "L", "l" -> robot.turnLeft();
+                case "L", "l" -> {
+                    robot.turnLeft();
+                    System.out.println("Robot has rotated to the left.");
+                }
 
                 //move number of places
                 case "M", "m" -> {
                     if (parameter < 0) {
-                        System.out.println("Enter a positive integer.");
+                        System.out.println("Please enter a positive integer.");
                     } else {
-                        robot.move(parameter);
+                        try{
+                            robot.move(parameter);
+                            System.out.println("Robot has moved by " + parameter + " units.");
+                        }catch(Exception e){
+                            System.out.println(e.getMessage());
+                        }
                     }
                 }
                 //print
