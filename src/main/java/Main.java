@@ -15,7 +15,7 @@ public class Main {
 
         do {
             System.out.println("Please enter the following command to initialize the Robot: \"I x\" or \"i x\", where x is an integer" +
-                    " greater than 0 and smaller than 1000. Press Q or q to exit.");
+                    " greater than 0 and smaller than 500. Press Q or q to exit.");
 
             String userInput = scanner.nextLine();
             userInputSplit = userInput.split(" ");
@@ -32,7 +32,7 @@ public class Main {
                 System.out.println("Exited without playing our game :(");
                 return;
             }
-        }while(condition || (size < 1 || size > 1000));
+        }while(condition || (size < 1 || size > 500));
 
         Robot robot = new Robot(size); //Create robot object with the size parameter for board size
         System.out.println("Here is the list of possible commands.\n" +
