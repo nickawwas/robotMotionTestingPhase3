@@ -48,7 +48,7 @@ class MainTest {
 
         Main.main(new String[0]);
 
-        assertEquals(getOutput().contains(testOutputString), true);
+        assertTrue(getOutput().contains(testOutputString));
     }
     @Test
     @DisplayName("Wrong input for initialization")
@@ -63,7 +63,7 @@ class MainTest {
 
         Main.main(new String[0]);
 
-        assertEquals(getOutput().contains(testOutputString), true);
+        assertTrue(getOutput().contains(testOutputString));
     }
     @Test
     @DisplayName("Current Position Test")
@@ -75,7 +75,7 @@ class MainTest {
         provideInput(test);
 
         Main.main(new String[0]);
-        assertEquals(getOutput().contains(testOutputString), true);
+        assertTrue(getOutput().contains(testOutputString));
     }
     @Test
     @DisplayName("Print Board Test")
@@ -88,7 +88,7 @@ class MainTest {
 
         Main.main(new String[0]);
         //assertEquals(getOutput(), getOutput().contains(testOutputString));
-        assertEquals(getOutput().contains(testOutputString), true);
+        assertTrue(getOutput().contains(testOutputString));
     }
     @Test
     @DisplayName("Turn Left Test")
@@ -101,7 +101,7 @@ class MainTest {
 
         Main.main(new String[0]);
 
-        assertEquals(getOutput().contains(testOutputString), true);
+        assertTrue(getOutput().contains(testOutputString));
     }
     @Test
     @DisplayName("Turn Right Test")
@@ -114,7 +114,7 @@ class MainTest {
 
         Main.main(new String[0]);
 
-        assertEquals(getOutput().contains(testOutputString), true);
+        assertTrue(getOutput().contains(testOutputString));
     }
     @Test
     @DisplayName("Pen Up Test")
@@ -127,7 +127,7 @@ class MainTest {
 
         Main.main(new String[0]);
 
-        assertEquals(getOutput().contains(testOutputString), true);
+        assertTrue(getOutput().contains(testOutputString));
     }
     @Test
     @DisplayName("Pen Down Test")
@@ -140,7 +140,7 @@ class MainTest {
 
         Main.main(new String[0]);
 
-        assertEquals(getOutput().contains(testOutputString), true);
+        assertTrue(getOutput().contains(testOutputString));
     }
 
     @Test
@@ -154,7 +154,7 @@ class MainTest {
 
         Main.main(new String[0]);
 
-        assertEquals(getOutput().contains(testOutputString), true);
+        assertTrue(getOutput().contains(testOutputString));
     }
     @Test
     @DisplayName("Failed Move Test")
@@ -167,7 +167,7 @@ class MainTest {
 
         Main.main(new String[0]);
 
-        assertEquals(getOutput().contains(testOutputString), true);
+        assertTrue(getOutput().contains(testOutputString));
     }
 
     @Test
@@ -181,6 +181,6 @@ class MainTest {
 
         Main.main(new String[0]);
 
-        assertEquals(getOutput().contains(testOutputString), true);
+        assertTrue(getOutput().contains(testOutputString));
     }
 }

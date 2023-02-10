@@ -2,8 +2,6 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
 
-import static java.lang.System.exit;
-
 public class Main {
     public static void main(String[] args) {
 
@@ -14,11 +12,10 @@ public class Main {
         String[] userInputSplit;
         String command;
         Scanner scanner = new Scanner(System.in);
-        //Initialize robot and board
 
         do {
             System.out.println("Please enter the following command to initialize the Robot: \"I x\" or \"i x\", where x is an integer" +
-                    " greater than 0 and smaller than 1000.");
+                    " greater than 0 and smaller than 1000. Press Q or q to exit.");
 
             String userInput = scanner.nextLine();
             userInputSplit = userInput.split(" ");
@@ -44,7 +41,7 @@ public class Main {
                 "It must be positive.\n" + "P or p to print the current board.\n" +
                 "C or c to print the current state of the robot.\n" +
                 "Q or q to exit the program.\n" + "I x or i x to reinitialize the robot where x > 0 and x < 1000.\n");
-        //case statement with different commands inside a while loop, Q flag for exit which is the boolean
+
         int parameter = 0;
         while(true){
             //enter a command, command wil be used for switch
@@ -105,10 +102,10 @@ public class Main {
                     }
                 }
                 //print
-                case "P", "p" -> robot.printBoard();
+                case "P", "p" -> System.out.println(robot.printBoard());
 
                 //print current
-                case "C", "c" -> robot.currentStateOfTheRobot();
+                case "C", "c" -> System.out.println(robot.currentStateOfTheRobot());
 
                 //exit program
                 case "Q", "q" -> {
@@ -125,7 +122,6 @@ public class Main {
                 }
                 //command not recognized
                 default ->
-                    //code block
                         System.out.println("The command you have entered is not valid, please re-enter a valid command.");
             }
         }
