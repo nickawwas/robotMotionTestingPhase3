@@ -1,5 +1,5 @@
 class Robot {
-	private byte direction;
+	private int direction;
 	private boolean penIsDown;
 	private int[] coordinates = {0,0};
 	private boolean[][] boardState;
@@ -30,11 +30,11 @@ class Robot {
 	 */
 	// Command R|r
 	public void turnLeft() {
-		this.direction = (byte) ((this.direction - 1) % 4);
+		this.direction = (this.direction + 3) % 4;
 	}
 	// Command L|l
 	public void turnRight() {
-		this.direction = (byte) ((this.direction + 1) % 4);
+		this.direction = (this.direction + 1) % 4;
 	}
 	// Command M s|m s
 	// TODO: add a check
@@ -42,7 +42,7 @@ class Robot {
 		switch (this.direction) {
 			// facing north
 			case 0 -> {
-				if (this.coordinates[0] + s > this.boardState.length) {
+				if (this.coordinates[0] + s > this.boardState.length - 1) {
 					throw new Exception("Movement request would make the robot fall off the board.");
 				} else {
 					while (s > 0) {
@@ -54,7 +54,7 @@ class Robot {
 			}
 			// facing east
 			case 1 -> {
-				if (this.coordinates[1] + s > this.boardState.length) {
+				if (this.coordinates[1] + s > this.boardState.length - 1) {
 					throw new Exception("Movement request would make the robot fall off the board.");
 				} else {
 					while (s > 0) {
@@ -66,7 +66,7 @@ class Robot {
 			}
 			// facing south;
 			case 2 -> {
-				if (this.coordinates[0] - s > this.boardState.length) {
+				if (this.coordinates[0] - s > this.boardState.length - 1) {
 					throw new Exception("Movement request would make the robot fall off the board.");
 				} else {
 					while (s > 0) {
@@ -78,7 +78,7 @@ class Robot {
 			}
 			// facing west;
 			case 3 -> {
-				if (this.coordinates[1] - s > this.boardState.length) {
+				if (this.coordinates[1] - s > this.boardState.length - 1) {
 					throw new Exception("Movement request would make the robot fall off the board.");
 				} else {
 					while (s > 0) {

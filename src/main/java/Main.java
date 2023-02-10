@@ -1,6 +1,9 @@
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
+
+import static java.lang.System.exit;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -14,7 +17,7 @@ public class Main {
         //Initialize robot and board
 
         do {
-            System.out.println("Please enter the following command to initialize the Robot: I x, where x is an integer" +
+            System.out.println("Please enter the following command to initialize the Robot: \"I x\" or \"i x\", where x is an integer" +
                     " greater than 0 and smaller than 1000.");
 
             String userInput = scanner.nextLine();
@@ -24,7 +27,14 @@ public class Main {
                 size = Integer.parseInt(userInputSplit[1]); //used for movement or initialize
             }
             condition = (!Objects.equals(command, "I")) && !Objects.equals(command, "i");
-
+            if(condition){
+                System.out.println("Error.");
+            }
+            //to exit program
+            if(userInput.equals("q") || userInput.equals("Q")){
+                System.out.println("Exited without playing our game :(");
+                return;
+            }
         }while(condition || (size < 1 || size > 1000));
 
         Robot robot = new Robot(size); //Create robot object with the size parameter for board size
@@ -107,7 +117,6 @@ public class Main {
                 }
                 //initialize
                 case "I", "i" -> {
-                    //Function to change board size?
                     if (parameter < 1 || parameter > 1000) {
                         System.out.println("Invalid initialization, please enter a positive integer that is less than 1000.");
                         break;
