@@ -40,7 +40,7 @@ public class Main {
                 + "L or l to turn left.\n" + "M x or m x where x is an integer for the amount of squares to move." +
                 "It must be positive.\n" + "P or p to print the current board.\n" +
                 "C or c to print the current state of the robot.\n" +
-                "Q or q to exit the program.\n" + "I x or i x to reinitialize the robot where x > 0 and x < 1000.\n");
+                "Q or q to exit the program.\n" + "I x or i x to reinitialize the robot where x > 0 and x < 500.\n");
 
         int parameter = 0;
         while(true){
@@ -114,8 +114,8 @@ public class Main {
                 }
                 //initialize
                 case "I", "i" -> {
-                    if (parameter < 1 || parameter > 1000) {
-                        System.out.println("Invalid initialization, please enter a positive integer that is less than 1000.");
+                    if (parameter < 1 || parameter > 500) {
+                        System.out.println("Invalid initialization, please enter a positive integer that is less than 500.");
                         break;
                     }
                     robot = new Robot(parameter);

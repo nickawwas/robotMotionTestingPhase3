@@ -22,18 +22,18 @@ class Robot {
 		return this.penIsDown;
 	}
 
-	// Command R|r
+	// Command L|l
 	public int turnLeft() {
 		this.direction = (this.direction + 3) % 4;
 		return this.direction;
 	}
-	// Command L|l
+	// Command R|r
 	public int turnRight() {
 		this.direction = (this.direction + 1) % 4;
 		return this.direction;
 	}
-	// Command M s|m s
 
+	// Command M s|m s
 	public int[] move(int s) throws Exception {
 		switch (this.direction) {
 			// facing north
@@ -90,29 +90,29 @@ class Robot {
 
 	// Command P|p
 	public String printBoard() {
-		String board = "";
+		StringBuilder board = new StringBuilder();
 		for(int i = this.boardState.length - 1; i >= 0; i--) {
 			for(int j = 0; j < this.boardState.length; j++) {
 				if(this.coordinates[1] == i && this.coordinates[0] == j){
 					if (this.direction == 0) {
-						board = board + "↑\t";
+						board.append("↑\t");
 					} else if (this.direction == 1) {
-						board = board + "→\t";
+						board.append("→\t");
 					} else if (this.direction == 2) {
-						board = board + "↓\t";
+						board.append("↓\t");
 					} else if (this.direction == 3) {
-						board = board + "←\t";
+						board.append("←\t");
 					}
 				}
 				else if (this.boardState[i][j]) {
-					board = board + "*\t";
+					board.append("*\t");
 				} else {
-					board = board + ".\t";
+					board.append(".\t");
 				}
 			}
-			board = board + "\n";
+			board.append("\n");
 		}
-		return board;
+		return board.toString();
 	}
 
 	// Command C|c
