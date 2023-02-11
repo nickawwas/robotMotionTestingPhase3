@@ -25,6 +25,9 @@ class RobotTest {
     @DisplayName("Robot Turn Left Test")
     void turnLeft() {
         assertEquals(3, robot.turnLeft());
+        assertEquals(2, robot.turnLeft());
+        assertEquals(1, robot.turnLeft());
+        assertEquals(0, robot.turnLeft());
     }
 
     @Test
@@ -32,6 +35,8 @@ class RobotTest {
     void turnRight() {
         assertEquals(1, robot.turnRight());
         assertEquals(2, robot.turnRight());
+        assertEquals(3, robot.turnRight());
+        assertEquals(0, robot.turnRight());
     }
 
     @Test
