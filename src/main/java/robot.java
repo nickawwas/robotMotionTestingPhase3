@@ -62,25 +62,25 @@ class Robot {
 			}
 			// facing south;
 			case 2 -> {
-				if (this.coordinates[1] - s < this.boardState.length - 1) {
+				if (this.coordinates[1] - s < 0) {
 					throw new Exception("Movement request would make the robot fall off the board.");
 				} else {
 					while (s > 0) {
 						this.coordinates[1]--;
 						markBoard();
-						s++;
+						s--;
 					}
 				}
 			}
 			// facing west;
 			case 3 -> {
-				if (this.coordinates[0] - s < this.boardState.length - 1) {
+				if (this.coordinates[0] - s < 0) {
 					throw new Exception("Movement request would make the robot fall off the board.");
 				} else {
 					while (s > 0) {
 						this.coordinates[0]--;
 						markBoard();
-						s++;
+						s--;
 					}
 				}
 			}
