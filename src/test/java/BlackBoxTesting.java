@@ -3,7 +3,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import org.junit.jupiter.params.provider.CsvSource;
 
 
@@ -41,20 +40,6 @@ class BlackBoxTesting {
         System.setIn(systemIn);
         System.setOut(systemOut);
     }
-
-    /* Additional missing test cases From */
-
-    // Robot() only tested with one size array
-    // 	- TODO: Test with multiple sizes and try invalid size -1, 1, 0
-
-    // 	printBoard only tests for robot to move within bounds and with one direction only
-    // 	- TODO: Write test case for robot moving in multiple directions
-    // 	- TODO: Write test case for robot moving with Pen up, no stars should appear
-
-    // 	currentState only tests for robot at default position
-    // 	- TODO: Move robot to different position, try with pen set down as well, and facing in all directions
-
-    // 	Didn't directly test markBoard()
 
     /*
      Test Function: 1
@@ -174,6 +159,21 @@ class BlackBoxTesting {
                      "→\t.\t.\t.\t\n" +
                      "*\t.\t.\t.\t\n" +
                      "*\t.\t.\t.\t\n", robot.printBoard());
+
+        
+        assertEquals(2, robot.turnRight());
+
+        assertEquals(".\t.\t.\t.\t\n" +
+                     "↓\t.\t.\t.\t\n" +
+                     "*\t.\t.\t.\t\n" +
+                     "*\t.\t.\t.\t\n", robot.printBoard());
+
+        assertEquals(3, robot.turnRight());
+
+        assertEquals(".\t.\t.\t.\t\n" +
+                    "←\t.\t.\t.\t\n" +
+                    "*\t.\t.\t.\t\n" +
+                    "*\t.\t.\t.\t\n", robot.printBoard());
     }
 
 
@@ -202,9 +202,9 @@ class BlackBoxTesting {
     /*
      Test Function: 5
      Test type : Functional, blackbox
-     Input : <i 10, Please enter a command.", "i 100, Please enter a command.", "50 i, Error.", "i -1, Error.", "i --10, Error.", "100, Error.", "i 501, 500">.
+     Input : <"c", "c 10", "10 c", "C", "m 2 c", "d c", "r, c">.
      Description : Test print position command
-     Expected output : <Please enter a command.", "Please enter a command.", "Error.", "Error.", "Error.", "Error.", "500" >
+     Expected output : <"Position: 0, 0 - Pen: up - Facing: north", "Position: 0, 0 - Pen: Up - Facing: North", "Error.", "Position: 0, 0 - Pen: up - Facing: north", "Position: 0, 2 - Pen: up - Facing: north", "Position: 0, 0 - Pen: down - Facing: north.", "Position: 0, 0 - Pen: up - Facing: east">
      Tester : Nicholas Harris
      Date : March 30th
     */
@@ -225,9 +225,9 @@ class BlackBoxTesting {
     /*
      Test Function: 6
      Test type : Functional, blackbox
-     Input : <"m 2, Position: 0, 2 - Pen: up - Facing: north", "m 10, off the board", "m 100,  off the board", "m -1, positive integer.", "m --10, positive integer.">.
+     Input : <"m 2", "m 10", "m 100", "m -1", "m --10">.
      Description : Test move command input
-     Expected output : <Please enter a command.", "Please enter a command.", "Error.", "Error.", "Error.", "Error.", "500" >
+     Expected output : <Position: 0, 2 - Pen: up - Facing: north", "off the board", "off the board", "positive integer.", "positive integer.">
      Tester : Nicholas Harris
      Date : March 30th
     */
@@ -248,9 +248,9 @@ class BlackBoxTesting {
     /*
      Test Function: 7
      Test type : Functional, blackbox
-     Input : <"d, Position: 0, 0 - Pen: down - Facing: north.", "d 10, Error.", "d 100, Error.", "d -1, Error.", "d --10, Error.", "d 501, Error.", "d 500, Error.">.
+     Input : <"d", "d 10", "d 100n", "C", " D", " D", "D">.
      Description : Test pen down command input
-     Expected output : <Please enter a command.", "Please enter a command.", "Error.", "Error.", "Error.", "Error.", "500" >
+     Expected output : <"Pen: Down", "Pen: Down", "Pen: Down", "Pen: Up", " Pen: Down", " Pen: Down", "Pen: Down">
      Tester : Nicholas Harris
      Date : March 30th
     */
@@ -271,9 +271,9 @@ class BlackBoxTesting {
     /*
      Test Function: 8
      Test type : Functional, blackbox
-     Input : <"u, Position: 0, 0 - Pen: up - Facing: north.", "u 10, Error.", "u 100, Error.", "u -1, Error.", "u --10, Error.", "u 501, Error.", "u 500, Error.">.
+     Input : <"d u", "u 10", "u 100", "C", " U", " U", "U">.
      Description : Test pen up command input
-     Expected output : <Please enter a command.", "Please enter a command.", "Error.", "Error.", "Error.", "Error.", "500" >
+     Expected output : <"Pen: Up", "Pen: Up", "Pen: Up", "Pen: Up", " Pen: Up", "Pen: Up", "Pen: Up">
      Tester : Nicholas Harris
      Date : March 30th
     */
@@ -294,9 +294,9 @@ class BlackBoxTesting {
     /*
      Test Function: 9
      Test type : Functional, blackbox
-     Input : <"r, Position: 0, 0 - Pen: up - Facing: east", "r 10, Error.", "r 100, Error.", "r -1, Error.", "r --10, Error.", "r 501, Error.", "r 500, Error.">.
+     Input : <"r", "r r", "r", "r -1", "r r r" , "r 501", "c">.
      Description : Test right command input
-     Expected output : <Please enter a command.", "Please enter a command.", "Error.", "Error.", "Error.", "Error.", "500" >
+     Expected output : <"Facing: East", "Facing: South", "Facing: East", "Facing: East", "Facing: West", "Facing: East", "Facing: North">
      Tester : Nicholas Harris
      Date : March 30th
     */
@@ -318,9 +318,9 @@ class BlackBoxTesting {
     /*
      Test Function: 10
      Test type : Functional, blackbox
-     Input : <"l, Position: 0, 0 - Pen: up - Facing: west", "l 10, Error.", "l 100, Error.", "L -1, Error.", "L --10, Error.", "l 501, Error.", "l 500, Error.">.
+     Input : <"l, l l, l 100, l -1, l l l , l 501, c>.
      Description : Test left command input
-     Expected output : <Please enter a command.", "Please enter a command.", "Error.", "Error.", "Error.", "Error.", "500" >
+     Expected output : <"Facing: West", "Facing: South", "Facing: West", "Facing: West", "Facing: East", "Facing: West", "Facing: North" >
      Tester : Nicholas Harris
      Date : March 30th
     */
@@ -341,14 +341,14 @@ class BlackBoxTesting {
     /*
      Test Function: 11
      Test type : Functional, blackbox
-     Input : <"q, Position: 0, 0 - Pen: up - Facing: north", "q 10, Error.", "q 100, Error.", "q -1, Error.", "q --10, Error.", "q 501, Error.", "q 500, Error.">.
+     Input : <q, q 10, Q 100, q -1,  q --10, q, Q>.
      Description : Test quit input
-     Expected output : <Please enter a command.", "Please enter a command.", "Error.", "Error.", "Error.", "Error.", "500" >
+     Expected output : <quit", "quit", "quit", "quit", "quit", "quit", "quit">
      Tester : Nicholas Harris
      Date : March 30th
     */
     @ParameterizedTest
-    @CsvSource({"q, quit", "q 10, quit", "q 100, quit", "  q -1, quit", "  q --10, quit", "q, quit", "Q, quit"})
+    @CsvSource({"q, quit", "q 10, quit", "Q 100, quit", "  q -1, quit", "  q --10, quit", " q, quit", "Q, quit"})
     @DisplayName("Test Quit Command")
     void quitTest(String input, String expected) {
         String test = "";
@@ -360,7 +360,43 @@ class BlackBoxTesting {
         assertTrue(getOutput().contains(expected), getOutput());
     }
 
+    /*
+     Test Function: 12
+     Test type : Functional, blackbox
+     Input : <"i 2pq">.
+     Description : Test Print Board p Command
+     Expected output : <.\t.\t\n↑\t.\t\n>
+     Tester : Nicholas Harris
+     Date : March 30th
+    */
+    @ParameterizedTest
+    @CsvSource({"i 2pq, .\t.\t\n↑\t.\t\n"})
+    @DisplayName("Test Print Board Command")
+    void printBoardTest(String input, String expected) {
+        input = input.replace("p", "\np\n");
 
-    // Test for printing boards
+        provideInput(input);
+        Main.main(new String[0]);
+        assertTrue(getOutput().contains(expected), getOutput());
+    }
 
+    /*
+     Test Function: 13
+     Test type : Functional, blackbox
+     Input : <"i 2pq">.
+     Description : Test Print Board P Command
+     Expected output : <.\t.\t.\t\n↑\t.\t.\t\n.\t.\t.\t\n>
+     Tester : Nicholas Harris
+     Date : March 30th
+    */
+    @ParameterizedTest
+    @CsvSource({"i 3Pq, .\t.\t.\t\n↑\t.\t.\t\n.\t.\t.\t\n"})
+    @DisplayName("Test Print Board Command")
+    void printBoardTest2(String input, String expected) {
+        input = input.replace("P", "\np\n");
+
+        provideInput(input);
+        Main.main(new String[0]);
+        assertTrue(getOutput().contains(expected), getOutput());
+    }
 }
