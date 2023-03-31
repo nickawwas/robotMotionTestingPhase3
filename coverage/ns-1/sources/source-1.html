@@ -1,0 +1,232 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Main</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">&lt;empty package name&gt;</a>
+</div>
+
+<h1>Coverage Summary for Class: Main (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Main</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    87.5%
+  </span>
+  <span class="absValue">
+    (56/64)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;import java.util.Arrays;
+&nbsp;import java.util.Objects;
+&nbsp;import java.util.Scanner;
+&nbsp;
+<b class="nc">&nbsp;public class    Main {</b>
+&nbsp;    public static void main(String[] args) {
+&nbsp;
+<b class="fc">&nbsp;        System.out.println(&quot;Welcome to the Pen Robot Simulation Program&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;        int size = 0;</b>
+&nbsp;        boolean condition;
+&nbsp;        String[] userInputSplit;
+&nbsp;        String command;
+<b class="fc">&nbsp;        Scanner scanner = new Scanner(System.in);</b>
+&nbsp;
+<b class="fc">&nbsp;        do {</b>
+<b class="fc">&nbsp;            System.out.println(&quot;Please enter the following command to initialize the Robot: \&quot;I x\&quot; or \&quot;i x\&quot;, where x is an integer&quot; +</b>
+&nbsp;                    &quot; greater than 0 and smaller than 500. Press Q or q to exit.&quot;);
+&nbsp;
+<b class="fc">&nbsp;            String userInput = scanner.nextLine();</b>
+<b class="fc">&nbsp;            userInputSplit = userInput.split(&quot; &quot;);</b>
+<b class="fc">&nbsp;            command = userInputSplit[0];</b>
+<b class="fc">&nbsp;            if(userInputSplit.length &gt; 1){</b>
+<b class="fc">&nbsp;                size = Integer.parseInt(userInputSplit[1]); //used for movement or initialize</b>
+&nbsp;            }
+<b class="fc">&nbsp;            condition = (!Objects.equals(command, &quot;I&quot;)) &amp;&amp; !Objects.equals(command, &quot;i&quot;);</b>
+<b class="fc">&nbsp;            if(condition){</b>
+<b class="fc">&nbsp;                System.out.println(&quot;Error.&quot;);</b>
+&nbsp;            }
+&nbsp;            //to exit program
+<b class="fc">&nbsp;            if(userInput.equals(&quot;q&quot;) || userInput.equals(&quot;Q&quot;)){</b>
+<b class="fc">&nbsp;                System.out.println(&quot;Exited without playing our game :(&quot;);</b>
+&nbsp;                return;
+&nbsp;            }
+<b class="fc">&nbsp;        }while(condition || (size &lt; 1 || size &gt; 500));</b>
+&nbsp;
+<b class="fc">&nbsp;        Robot robot = new Robot(size); //Create robot object with the size parameter for board size</b>
+<b class="fc">&nbsp;        System.out.println(&quot;Here is the list of possible commands.\n&quot; +</b>
+&nbsp;                &quot;U or u to lift the pen.\n&quot; + &quot;D or d to set down the pen.\n&quot; + &quot;R or r to turn right.\n&quot;
+&nbsp;                + &quot;L or l to turn left.\n&quot; + &quot;M x or m x where x is an integer for the amount of squares to move.&quot; +
+&nbsp;                &quot;It must be positive.\n&quot; + &quot;P or p to print the current board.\n&quot; +
+&nbsp;                &quot;C or c to print the current state of the robot.\n&quot; +
+&nbsp;                &quot;Q or q to exit the program.\n&quot; + &quot;I x or i x to reinitialize the robot where x &gt; 0 and x &lt; 500.\n&quot;);
+&nbsp;
+<b class="fc">&nbsp;        int parameter = 0;</b>
+<b class="fc">&nbsp;        while(true){</b>
+&nbsp;            //enter a command, command wil be used for switch
+<b class="fc">&nbsp;            Arrays.fill(userInputSplit, null);</b>
+<b class="fc">&nbsp;            System.out.println(&quot;Please enter a command.&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;            String cmdInput = scanner.nextLine();</b>
+<b class="fc">&nbsp;            userInputSplit = cmdInput.split(&quot; &quot;);</b>
+<b class="fc">&nbsp;            command = userInputSplit[0];</b>
+<b class="fc">&nbsp;            if(userInputSplit.length &gt; 1){</b>
+<b class="fc">&nbsp;                parameter = Integer.parseInt(userInputSplit[1]); //used for movement or initialize</b>
+&nbsp;            }
+&nbsp;
+<b class="fc">&nbsp;            switch (command) {</b>
+&nbsp;                //pen up
+&nbsp;                case &quot;U&quot;, &quot;u&quot; -&gt; {
+<b class="fc">&nbsp;                    if(!robot.getPenIsDown()){</b>
+<b class="fc">&nbsp;                        System.out.println(&quot;Robot pen is already up.&quot;);</b>
+<b class="fc">&nbsp;                        break;</b>
+&nbsp;                    }
+<b class="fc">&nbsp;                    robot.setPenUp();</b>
+<b class="fc">&nbsp;                    System.out.println(&quot;Robot pen is now up.&quot;);</b>
+<b class="fc">&nbsp;                }</b>
+&nbsp;
+&nbsp;                //pen down
+&nbsp;                case &quot;D&quot;, &quot;d&quot; -&gt; {
+<b class="fc">&nbsp;                    if(robot.getPenIsDown()){</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;Robot pen is already down.&quot;);</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    }
+<b class="fc">&nbsp;                    robot.setPenDown();</b>
+<b class="fc">&nbsp;                    System.out.println(&quot;Robot pen is now down.&quot;);</b>
+<b class="fc">&nbsp;                }</b>
+&nbsp;
+&nbsp;                //turn right
+&nbsp;                case &quot;R&quot;, &quot;r&quot; -&gt; {
+<b class="fc">&nbsp;                    robot.turnRight();</b>
+<b class="fc">&nbsp;                    System.out.println(&quot;Robot has rotated to the right.&quot;);</b>
+<b class="fc">&nbsp;                }</b>
+&nbsp;
+&nbsp;                //turn left
+&nbsp;                case &quot;L&quot;, &quot;l&quot; -&gt; {
+<b class="fc">&nbsp;                    robot.turnLeft();</b>
+<b class="fc">&nbsp;                    System.out.println(&quot;Robot has rotated to the left.&quot;);</b>
+<b class="fc">&nbsp;                }</b>
+&nbsp;
+&nbsp;                //move number of places
+&nbsp;                case &quot;M&quot;, &quot;m&quot; -&gt; {
+<b class="fc">&nbsp;                    if (parameter &lt; 0) {</b>
+<b class="fc">&nbsp;                        System.out.println(&quot;Please enter a positive integer.&quot;);</b>
+<b class="fc">&nbsp;                    } else {</b>
+&nbsp;                        try{
+<b class="fc">&nbsp;                            robot.move(parameter);</b>
+<b class="fc">&nbsp;                            System.out.println(&quot;Robot has moved by &quot; + parameter + &quot; units.&quot;);</b>
+<b class="fc">&nbsp;                        }catch(Exception e){</b>
+<b class="fc">&nbsp;                            System.out.println(e.getMessage());</b>
+&nbsp;                        }
+&nbsp;                    }
+<b class="fc">&nbsp;                }</b>
+&nbsp;                //print
+<b class="fc">&nbsp;                case &quot;P&quot;, &quot;p&quot; -&gt; System.out.println(robot.printBoard());</b>
+&nbsp;
+&nbsp;                //print current
+<b class="fc">&nbsp;                case &quot;C&quot;, &quot;c&quot; -&gt; System.out.println(robot.currentStateOfTheRobot());</b>
+&nbsp;
+&nbsp;                //exit program
+&nbsp;                case &quot;Q&quot;, &quot;q&quot; -&gt; {
+<b class="fc">&nbsp;                    System.out.println(&quot;You have quit the Robot Simulation Program.&quot;);</b>
+&nbsp;                    return;
+&nbsp;                }
+&nbsp;                //initialize
+&nbsp;                case &quot;I&quot;, &quot;i&quot; -&gt; {
+<b class="nc">&nbsp;                    if (parameter &lt; 1 || parameter &gt; 500) {</b>
+<b class="nc">&nbsp;                        System.out.println(&quot;Invalid initialization, please enter a positive integer that is less than 500.&quot;);</b>
+<b class="nc">&nbsp;                        break;</b>
+&nbsp;                    }
+<b class="nc">&nbsp;                    robot = new Robot(parameter);</b>
+<b class="nc">&nbsp;                }</b>
+&nbsp;                //command not recognized
+&nbsp;                default -&gt;
+<b class="fc">&nbsp;                        System.out.println(&quot;The command you have entered is not valid, please re-enter a valid command.&quot;);</b>
+&nbsp;            }
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-03-31 11:40</div>
+</div>
+</body>
+</html>

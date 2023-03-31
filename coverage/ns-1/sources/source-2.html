@@ -1,0 +1,248 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Robot</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">&lt;empty package name&gt;</a>
+</div>
+
+<h1>Coverage Summary for Class: Robot (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Robot</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (10/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (78/78)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;class Robot {
+&nbsp;	private int direction;
+&nbsp;	private boolean penIsDown;
+<b class="fc">&nbsp;	private int[] coordinates = {0,0};</b>
+&nbsp;	private boolean[][] boardState;
+&nbsp;
+<b class="fc">&nbsp;	public Robot(int n) {</b>
+<b class="fc">&nbsp;		this.direction = 0;</b>
+<b class="fc">&nbsp;		this.penIsDown = false;</b>
+<b class="fc">&nbsp;		this.boardState = new boolean[n][n];</b>
+&nbsp;	}
+&nbsp;	// Command U|u
+&nbsp;	public void setPenUp() {
+<b class="fc">&nbsp;		this.penIsDown = false;</b>
+&nbsp;	}
+&nbsp;	// Command D|d
+&nbsp;	public void setPenDown() {
+<b class="fc">&nbsp;		this.penIsDown = true;</b>
+<b class="fc">&nbsp;		markBoard();</b>
+&nbsp;	}
+&nbsp;	public boolean getPenIsDown(){
+<b class="fc">&nbsp;		return this.penIsDown;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	// Command L|l
+&nbsp;	public int turnLeft() {
+<b class="fc">&nbsp;		this.direction = (this.direction + 3) % 4;</b>
+<b class="fc">&nbsp;		return this.direction;</b>
+&nbsp;	}
+&nbsp;	// Command R|r
+&nbsp;	public int turnRight() {
+<b class="fc">&nbsp;		this.direction = (this.direction + 1) % 4;</b>
+<b class="fc">&nbsp;		return this.direction;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	// Command M s|m s
+&nbsp;	public int[] move(int s) throws Exception {
+<b class="fc">&nbsp;		switch (this.direction) {</b>
+&nbsp;			// facing north
+&nbsp;			case 0 -&gt; {
+<b class="fc">&nbsp;				if (this.coordinates[1] + s &gt; this.boardState.length - 1) {</b>
+<b class="fc">&nbsp;					throw new Exception(&quot;Movement request would make the robot fall off the board.&quot;);</b>
+&nbsp;				} else {
+<b class="fc">&nbsp;					while (s &gt; 0) {</b>
+<b class="fc">&nbsp;						this.coordinates[1]++;</b>
+<b class="fc">&nbsp;						markBoard();</b>
+<b class="fc">&nbsp;						s--;</b>
+&nbsp;					}
+&nbsp;				}
+<b class="fc">&nbsp;			}</b>
+&nbsp;			// facing east
+&nbsp;			case 1 -&gt; {
+<b class="fc">&nbsp;				if (this.coordinates[0] + s &gt; this.boardState.length - 1) {</b>
+<b class="fc">&nbsp;					throw new Exception(&quot;Movement request would make the robot fall off the board.&quot;);</b>
+&nbsp;				} else {
+<b class="fc">&nbsp;					while (s &gt; 0) {</b>
+<b class="fc">&nbsp;						this.coordinates[0]++;</b>
+<b class="fc">&nbsp;						markBoard();</b>
+<b class="fc">&nbsp;						s--;</b>
+&nbsp;					}
+&nbsp;				}
+<b class="fc">&nbsp;			}</b>
+&nbsp;			// facing south;
+&nbsp;			case 2 -&gt; {
+<b class="fc">&nbsp;				if (this.coordinates[1] - s &lt; 0) {</b>
+<b class="fc">&nbsp;					throw new Exception(&quot;Movement request would make the robot fall off the board.&quot;);</b>
+&nbsp;				} else {
+<b class="fc">&nbsp;					while (s &gt; 0) {</b>
+<b class="fc">&nbsp;						this.coordinates[1]--;</b>
+<b class="fc">&nbsp;						markBoard();</b>
+<b class="fc">&nbsp;						s--;</b>
+&nbsp;					}
+&nbsp;				}
+<b class="fc">&nbsp;			}</b>
+&nbsp;			// facing west;
+&nbsp;			case 3 -&gt; {
+<b class="fc">&nbsp;				if (this.coordinates[0] - s &lt; 0) {</b>
+<b class="fc">&nbsp;					throw new Exception(&quot;Movement request would make the robot fall off the board.&quot;);</b>
+&nbsp;				} else {
+<b class="fc">&nbsp;					while (s &gt; 0) {</b>
+<b class="fc">&nbsp;						this.coordinates[0]--;</b>
+<b class="fc">&nbsp;						markBoard();</b>
+<b class="fc">&nbsp;						s--;</b>
+&nbsp;					}
+&nbsp;				}
+&nbsp;			}
+&nbsp;		}
+<b class="fc">&nbsp;		return this.coordinates;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	// Command P|p
+&nbsp;	public String printBoard() {
+<b class="fc">&nbsp;		StringBuilder board = new StringBuilder();</b>
+<b class="fc">&nbsp;		for(int i = this.boardState.length - 1; i &gt;= 0; i--) {</b>
+<b class="fc">&nbsp;			for(int j = 0; j &lt; this.boardState.length; j++) {</b>
+<b class="fc">&nbsp;				if(this.coordinates[1] == i &amp;&amp; this.coordinates[0] == j){</b>
+<b class="fc">&nbsp;					if (this.direction == 0) {</b>
+<b class="fc">&nbsp;						board.append(&quot;↑\t&quot;);</b>
+<b class="fc">&nbsp;					} else if (this.direction == 1) {</b>
+<b class="fc">&nbsp;						board.append(&quot;→\t&quot;);</b>
+<b class="fc">&nbsp;					} else if (this.direction == 2) {</b>
+<b class="fc">&nbsp;						board.append(&quot;↓\t&quot;);</b>
+<b class="fc">&nbsp;					} else if (this.direction == 3) {</b>
+<b class="fc">&nbsp;						board.append(&quot;←\t&quot;);</b>
+&nbsp;					}
+<b class="fc">&nbsp;				}</b>
+<b class="fc">&nbsp;				else if (this.boardState[i][j]) {</b>
+<b class="fc">&nbsp;					board.append(&quot;*\t&quot;);</b>
+<b class="fc">&nbsp;				} else {</b>
+<b class="fc">&nbsp;					board.append(&quot;.\t&quot;);</b>
+&nbsp;				}
+&nbsp;			}
+<b class="fc">&nbsp;			board.append(&quot;\n&quot;);</b>
+&nbsp;		}
+<b class="fc">&nbsp;		return board.toString();</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	// Command C|c
+&nbsp;	public String currentStateOfTheRobot() {
+&nbsp;		String state;
+<b class="fc">&nbsp;		state = &quot;Position: &quot; + this.coordinates[0] + &quot;, &quot; + this.coordinates[1] + &quot; - Pen: &quot;;</b>
+<b class="fc">&nbsp;		if (this.penIsDown) {</b>
+<b class="fc">&nbsp;			state = state + &quot;Down&quot;;</b>
+<b class="fc">&nbsp;		} else {</b>
+<b class="fc">&nbsp;			state = state + &quot;Up&quot;;</b>
+&nbsp;		}
+<b class="fc">&nbsp;		state = state + &quot; - Facing: &quot;;</b>
+<b class="fc">&nbsp;		if (this.direction == 0) {</b>
+<b class="fc">&nbsp;			state = state + &quot;North&quot;;</b>
+<b class="fc">&nbsp;		} else if (this.direction == 1) {</b>
+<b class="fc">&nbsp;			state = state + &quot;East&quot;;</b>
+<b class="fc">&nbsp;		} else if (this.direction == 2) {</b>
+<b class="fc">&nbsp;			state = state + &quot;South&quot;;</b>
+<b class="fc">&nbsp;		} else if (this.direction == 3) {</b>
+<b class="fc">&nbsp;			state = state + &quot;West&quot;;</b>
+&nbsp;		}
+<b class="fc">&nbsp;		return state;</b>
+&nbsp;	}
+&nbsp;
+&nbsp;	private void markBoard() {
+<b class="fc">&nbsp;		if (this.penIsDown) {</b>
+<b class="fc">&nbsp;			this.boardState[this.coordinates[1]][this.coordinates[0]] = true;</b>
+&nbsp;		}
+&nbsp;	}
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-03-31 11:40</div>
+</div>
+</body>
+</html>
