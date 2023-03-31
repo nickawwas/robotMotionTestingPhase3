@@ -5,25 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1279412-bb4f-4e74-8bbd-3f76e772c75f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/MutationTesting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Project_448.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/robot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/DataFlowTesting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/DataFlowTesting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/MainTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/RobotTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/RobotTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Robot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/DataFlowTesting.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/MainTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/RobotTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/BlackBoxTesting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/BlackBoxTesting.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +144,7 @@
       <workItem from="1680198182899" duration="664000" />
       <workItem from="1680198867465" duration="1510000" />
       <workItem from="1680200633223" duration="229000" />
-      <workItem from="1680200879250" duration="3064000" />
+      <workItem from="1680200879250" duration="3679000" />
     </task>
     <servers />
   </component>
