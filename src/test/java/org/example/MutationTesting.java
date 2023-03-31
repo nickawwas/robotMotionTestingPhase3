@@ -1,14 +1,19 @@
+package org.example;
+
+import org.example.Robot;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class DataFlowTesting {
+public class MutationTesting {
 
     // Tester: Matthew Sklivas
     // Date: 2023/03/30
-    // Type: Data-Flow, White-Box
+    // Type: Mutation, White-Box
     // Input: < 1 >
-    // Description: Cover the dpu {(3,4)} for the “move()” function by attempting to move towards the north beyond the board limits.
+    // Description: Cover the path of the “move()” function which involves handling moving towards
+    // the north beyond the board limits.
     // Expected: < "Movement request would make the robot fall off the board." >
     @Test
     void moveDefUseNorthException() {
@@ -24,9 +29,10 @@ public class DataFlowTesting {
 
     // Tester: Matthew Sklivas
     // Date: 2023/03/30
-    // Type: Data-Flow, White-Box
+    // Type: Mutation, White-Box
     // Input: < 1 >
-    // Description: Cover the dpu {7,8)} for the “move()” function by attempting to move towards the east beyond the board limits.
+    // Description: Cover the path of the “move()” function which involves handling moving towards
+    // the east beyond the board limits.
     // Expected: < "Movement request would make the robot fall off the board." >
     @Test
     void moveDefUseEastException() {
@@ -43,9 +49,10 @@ public class DataFlowTesting {
 
     // Tester: Matthew Sklivas
     // Date: 2023/03/30
-    // Type: Data-Flow, White-Box
+    // Type: Mutation, White-Box
     // Input: < 1 >
-    // Description: Covers the dpu {(11,12)} for the “move()” function by attempting to move towards the south beyond the board limits.
+    // Description: Cover the path of the “move()” function which involves handling moving towards
+    // the south beyond the board limits.
     // Expected: < "Movement request would make the robot fall off the board." >
     @Test
     void moveDefUseSouthException() {
@@ -63,9 +70,10 @@ public class DataFlowTesting {
 
     // Tester: Matthew Sklivas
     // Date: 2023/03/30
-    // Type: Data-Flow, White-Box
+    // Type: Mutation, White-Box
     // Input: < 1 >
-    // Description: Covers the dpu {(15,16)} for the “move()” function by attempting to move towards the west beyond the board limits.
+    // Description: Cover the path of the “move()” function which involves handling moving towards
+    // the west beyond the board limits.
     // Expected: < "Movement request would make the robot fall off the board." >
     @Test
     void moveDefUseWestException() {
@@ -82,10 +90,10 @@ public class DataFlowTesting {
 
     // Tester: Matthew Sklivas
     // Date: 2023/03/30
-    // Type: Data-Flow, White-Box
+    // Type: Mutation, White-Box
     // Input: < 1, 1 >
-    // Description: Covers the dcu {6} and dpus {(3,5), (5,6), (5,19)} for the “move()” function,
-    // moving towards the north, followed by the dcu {14} and dpus {(11,13), (13,14), (13,19)}, moving towards the south.
+    // Description: Covers the paths for the “move()” function involving moving towards the north
+    // as well as moving towards the south.
     // Expected: < [0,1], [0,0] >
     @Test
     void moveDefUseNorthSouth() throws Exception {
@@ -101,11 +109,10 @@ public class DataFlowTesting {
 
     // Tester: Matthew Sklivas
     // Date: 2023/03/30
-    // Type: Data-Flow, White-Box
+    // Type: Mutation, White-Box
     // Input: < 1, 1 >
-    // Description: Covers the dcu {10} and dpus {(7,9), (9,10), (9,19)} for the “move()”
-    // function, moving towards the east, followed by the dcu {18} and dpus {(15,17), (17,18), (17,19)},
-    // moving towards the west.
+    // Description: Covers the paths for the “move()” function involving moving towards the east
+    // as well as moving towards the west.
     // Expected: < [1,0], [0,0] >
     @Test
     void moveDefUseEastWest() throws Exception {

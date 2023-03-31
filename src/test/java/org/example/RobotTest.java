@@ -1,3 +1,6 @@
+package org.example;
+
+import org.example.Robot;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -22,7 +25,7 @@ class RobotTest {
     }
 
     @Test
-    @DisplayName("Robot Turn Left Test")
+    @DisplayName("org.example.Robot Turn Left Test")
     void turnLeft() {
         assertEquals(3, robot.turnLeft());
         assertEquals(2, robot.turnLeft());
@@ -31,7 +34,7 @@ class RobotTest {
     }
 
     @Test
-    @DisplayName("Robot Turn Right Test")
+    @DisplayName("org.example.Robot Turn Right Test")
     void turnRight() {
         assertEquals(1, robot.turnRight());
         assertEquals(2, robot.turnRight());
@@ -40,7 +43,7 @@ class RobotTest {
     }
 
     @Test
-    @DisplayName("Robot Move Test")
+    @DisplayName("org.example.Robot Move Test")
     void move() throws Exception {
         int[] array = {0,2};
         assertArrayEquals(array, robot.move(2));
@@ -64,7 +67,7 @@ class RobotTest {
     }
 
     @Test
-    @DisplayName("Current State of Robot")
+    @DisplayName("Current State of org.example.Robot")
     void currentStateOfTheRobot() {
         assertEquals("Position: 0, 0 - Pen: Up - Facing: North", robot.currentStateOfTheRobot());
     }
