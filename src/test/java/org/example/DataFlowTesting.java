@@ -1,6 +1,5 @@
 package org.example;
 
-import org.example.Robot;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
