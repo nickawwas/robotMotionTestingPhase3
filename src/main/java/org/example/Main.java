@@ -1,3 +1,5 @@
+package org.example;
+
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
@@ -5,7 +7,7 @@ import java.util.Scanner;
 public class    Main {
     public static void main(String[] args) {
 
-        System.out.println("Welcome to the Pen Robot Simulation Program");
+        System.out.println("Welcome to the Pen org.example.Robot Simulation Program");
 
         int size = 0;
         boolean condition;
@@ -14,7 +16,7 @@ public class    Main {
         Scanner scanner = new Scanner(System.in);
 
         do {
-            System.out.println("Please enter the following command to initialize the Robot: \"I x\" or \"i x\", where x is an integer" +
+            System.out.println("Please enter the following command to initialize the org.example.Robot: \"I x\" or \"i x\", where x is an integer" +
                     " greater than 0 and smaller than 500. Press Q or q to exit.");
 
             String userInput = scanner.nextLine();
@@ -59,33 +61,33 @@ public class    Main {
                 //pen up
                 case "U", "u" -> {
                     if(!robot.getPenIsDown()){
-                        System.out.println("Robot pen is already up.");
+                        System.out.println("org.example.Robot pen is already up.");
                         break;
                     }
                     robot.setPenUp();
-                    System.out.println("Robot pen is now up.");
+                    System.out.println("org.example.Robot pen is now up.");
                 }
 
                 //pen down
                 case "D", "d" -> {
                     if(robot.getPenIsDown()){
-                        System.out.println("Robot pen is already down.");
+                        System.out.println("org.example.Robot pen is already down.");
                         break;
                     }
                     robot.setPenDown();
-                    System.out.println("Robot pen is now down.");
+                    System.out.println("org.example.Robot pen is now down.");
                 }
 
                 //turn right
                 case "R", "r" -> {
                     robot.turnRight();
-                    System.out.println("Robot has rotated to the right.");
+                    System.out.println("org.example.Robot has rotated to the right.");
                 }
 
                 //turn left
                 case "L", "l" -> {
                     robot.turnLeft();
-                    System.out.println("Robot has rotated to the left.");
+                    System.out.println("org.example.Robot has rotated to the left.");
                 }
 
                 //move number of places
@@ -95,7 +97,7 @@ public class    Main {
                     } else {
                         try{
                             robot.move(parameter);
-                            System.out.println("Robot has moved by " + parameter + " units.");
+                            System.out.println("org.example.Robot has moved by " + parameter + " units.");
                         }catch(Exception e){
                             System.out.println(e.getMessage());
                         }
@@ -109,7 +111,7 @@ public class    Main {
 
                 //exit program
                 case "Q", "q" -> {
-                    System.out.println("You have quit the Robot Simulation Program.");
+                    System.out.println("You have quit the org.example.Robot Simulation Program.");
                     return;
                 }
                 //initialize

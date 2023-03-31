@@ -7,8 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="test" />
-        <module name="robotMotionTestingPhase3" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="test" target="15" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -1,3 +1,5 @@
+package org.example;
+
 class Robot {
 	private int direction;
 	private boolean penIsDown;
