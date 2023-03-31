@@ -1,3 +1,4 @@
+org\example\BlackBoxTesting.class
 org\example\MainTest.class
 org\example\MutationTesting.class
 org\example\RobotTest.class
