@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1279412-bb4f-4e74-8bbd-3f76e772c75f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/MutationTesting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/MutationTesting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/pit-reports/202303302033/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/pit-reports/202303302033/org.example/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/pit-reports/202303302033/org.example/robot.java.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/pit-reports/202303302033/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/example/MutationTesting.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/example/MutationTesting.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,14 +58,16 @@
       <recent name="org.example" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in robotMotionTestingPhase3">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="Maven.mutation-testing [clean,test]">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -161,6 +172,7 @@
       <workItem from="1680198867465" duration="1510000" />
       <workItem from="1680200633223" duration="229000" />
       <workItem from="1680200879250" duration="3679000" />
+      <workItem from="1680285813747" duration="4929000" />
     </task>
     <servers />
   </component>
