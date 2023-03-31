@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1279412-bb4f-4e74-8bbd-3f76e772c75f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/BlackBoxTesting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/BlackBoxTesting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Robot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Robot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/example/BlackBoxTesting.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/example/BlackBoxTesting.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/example/DataFlowTesting.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/example/DataFlowTesting.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/example/MainTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/example/MainTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/example/MutationTesting.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/example/MutationTesting.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/example/RobotTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/example/RobotTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,11 +177,12 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/robotMotionTestingPhase3$RobotTest.ic" NAME="RobotTest Coverage Results" MODIFIED="1680190897539" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/robotMotionTestingPhase3$BlackBoxTesting.ic" NAME="BlackBoxTesting Coverage Results" MODIFIED="1680277226219" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/robotMotionTestingPhase3$All_in_robotMotionTestingPhase3.ic" NAME="All in robotMotionTestingPhase3 Coverage Results" MODIFIED="1680277613942" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/robotMotionTestingPhase3$BlackBoxTesting.ic" NAME="BlackBoxTesting Coverage Results" MODIFIED="1680277226219" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/robotMotionTestingPhase3$MainTest.ic" NAME="MainTest Coverage Results" MODIFIED="1680190904650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/robotMotionTestingPhase3$RobotTest.ic" NAME="RobotTest Coverage Results" MODIFIED="1680190897539" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
