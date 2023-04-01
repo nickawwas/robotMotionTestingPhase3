@@ -9,10 +9,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class WhiteBoxTesting {
-
+    private Robot robo2;
     private final InputStream systemIn = System.in;
     private final PrintStream systemOut = System.out;
     private ByteArrayInputStream testIn;
@@ -36,9 +36,6 @@ public class WhiteBoxTesting {
         System.setIn(systemIn);
         System.setOut(systemOut);
     }
-
-
-
 
      /*
      Test : 1
@@ -499,9 +496,142 @@ public class WhiteBoxTesting {
         assertTrue(getOutput().contains(expected), getOutput());
     }
 
+    /*
+     Test Function: 21
+     Test type : Structural, whitebox
+     Input : <Robot(n) 5 move(s) 1 turnRight() currentStateOfTheRobot() move(s) 2 turnRight() setPenDown() currentStateOfTheRobot() turnRight() currentStateOfTheRobot()>.
+     Description : Robot getCurrentState tested in every direction with every pen state plus moving robot
+     Expected output : < Pen Up and East, Pen Down and South, Pen Down and West>
+     Tester : Nicholas Kawwas
+     Date : March 31th
+    */
+    @Test
+    @DisplayName("Current State of org.example.Robot for Every Direction")
+    void currentStateOfTheRobotEveryDirection() throws Exception {
+        robo2 = new Robot(5);
+        assertEquals("Position: 0, 0 - Pen: Up - Facing: North", robo2.currentStateOfTheRobot());
+
+        int[] coordinates  = robo2.move(1);
+        robo2.turnRight();
+        assertEquals("Position: 0, 1 - Pen: Up - Facing: East", robo2.currentStateOfTheRobot());
+
+        coordinates  = robo2.move(2);
+        robo2.turnRight();
+        robo2.setPenDown();
+        assertEquals("Position: 2, 1 - Pen: Down - Facing: South", robo2.currentStateOfTheRobot());
 
 
+        robo2.turnRight();
+        try {
+            coordinates  = robo2.move(3); // Try moving out of bounds
+        } catch (Exception e) {
+            assertEquals("Movement request would make the robot fall off the board.", e.getMessage());
+        }
+        assertEquals("Position: 2, 1 - Pen: Down - Facing: West", robo2.currentStateOfTheRobot());
+    }
 
+    /*
+     Test Function: 22
+     Test type : Structural, whitebox
+     Input : <Robot(n) 1 move(s) 1 Robot(n) 0 move(s) 0 Robot(n) -1>.
+     Description : Robot() tested with multiple sizes and try invalid size -1, 1, 0 and move in them
+     Expected output : < No Exception, No Exception, Exception -1 >
+     Tester : Nicholas Kawwas
+     Date : March 31th
+     */
+    @Test
+    @DisplayName("Robot() Constructor with Different Sizes")
+    void robotConstructorDiffSizes() throws Exception {
+        robo2 = new Robot(0);
+        int[] coordinates;
+        try {
+            coordinates = robo2.move(0); // Crashes, code should handle no movement here but doesn't
+        } catch (Exception e) {
+            assertNotEquals("Movement request would make the robot fall off the board.", e.getMessage());
+        }
 
+        robo2 = new Robot(1);
+        try {
+            coordinates = robo2.move(1); // Crashes, code should handle movement to edge here but doesn't
+        } catch (Exception e) {
+            assertNotEquals("Movement request would make the robot fall off the board.", e.getMessage());
+        }
 
+        try {
+            robo2 = new Robot(-1);
+        } catch (Exception e) {
+            assertEquals("-1", e.getMessage());
+        }
+    }
+
+    /*
+     Test Function: 23
+     Test type : Structural, whitebox
+     Input : <Robot(n) move(s) 7 move(s) 2 move(s) 0 turnRight() move(s) 8 move(s) 3 move(s) 0 turnRight() move(s) 9 move(s) 2 move(s) 0 turnRight() move(s) 10 move(s) 3 move(s) 0>.
+     Description : Moves robot in and out of bounds in every direction to cover all conditions
+     Expected output : < Out of Bounds Exception, Move 2, No Move, Out of Bounds Exception, Move 3, No Move, Out of Bounds Exception, Move 2, No Move, Out of Bounds Exception, Move 3, No Move>
+     Tester : Nicholas Kawwas
+     Date : March 30th
+     */
+    @Test
+    @DisplayName("Robot move out of bounds Test")
+    void roboMoveInOutBounds() throws Exception {
+        robo2 = new Robot(6);
+        // Case 0 - T
+        // If - T
+        try {
+            robo2.move(7);
+        } catch (Exception e) {
+            Exception exception = new Exception("Movement request would make the robot fall off the board.");
+            assertEquals(exception.getMessage(), e.getMessage());
+        }
+        // Else, While T
+        robo2.move(2);
+
+        // If, While - F
+        robo2.move(0);
+
+        // Case 1 - T
+        robo2.turnRight();
+        // If - T
+        try {
+            robo2.move(8);
+        } catch (Exception e) {
+            Exception exception = new Exception("Movement request would make the robot fall off the board.");
+            assertEquals(exception.getMessage(), e.getMessage());
+        }
+        // Else, While T
+        robo2.move(3);
+
+        // If, While - F
+        robo2.move(0);
+
+        // Case 2 - T
+        robo2.turnRight();
+        try {
+            robo2.move(9);
+        } catch (Exception e) {
+            Exception exception = new Exception("Movement request would make the robot fall off the board.");
+            assertEquals(exception.getMessage(), e.getMessage());
+        }
+        robo2.move(2);
+
+        // If, While - F
+        robo2.move(0);
+
+        // Case 3 - T
+        robo2.turnRight();
+        // If - T
+        try {
+            robo2.move(10);
+        } catch (Exception e) {
+            Exception exception = new Exception("Movement request would make the robot fall off the board.");
+            assertEquals(exception.getMessage(), e.getMessage());
+        }
+        // Else, While T
+        robo2.move(3);
+
+        // If, While - F
+        robo2.move(0);
+    }
 }

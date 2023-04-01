@@ -17,7 +17,6 @@ import java.io.PrintStream;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BlackBoxTesting {
-    private Robot robo2;
     private final Robot robot = new Robot(4);
     private final InputStream systemIn = System.in;
     private final PrintStream systemOut = System.out;
@@ -421,57 +420,5 @@ class BlackBoxTesting {
         provideInput(input);
         Main.main(new String[0]);
         assertTrue(getOutput().contains(expected), getOutput());
-    }
-
-    /*
-     Test Function: 15
-     Test type : Functional, blackbox
-     Input : <Robot(n) 5 move(s) 1 turnRight() currentStateOfTheRobot() move(s) 2 turnRight() setPenDown() currentStateOfTheRobot() turnRight() currentStateOfTheRobot()>.
-     Description : Robot getCurrentState tested in every direction with every pen state plus moving robot
-     Expected output : < Pen Up and East, Pen Down and South, Pen Down and West>
-     Tester : Nicholas Kawwas
-     Date : March 31th
-    */
-    @Test
-    @DisplayName("Current State of org.example.Robot for Every Direction")
-    void currentStateOfTheRobotEveryDirection() throws Exception {
-        robo2 = new Robot(5);
-        int[] coordinates  = robo2.move(1);
-        robo2.turnRight();
-        assertEquals("Position: 0, 1 - Pen: Up - Facing: East", robo2.currentStateOfTheRobot());
-
-        coordinates  = robo2.move(2);
-        robo2.turnRight();
-        robo2.setPenDown();
-        assertEquals("Position: 2, 1 - Pen: Down - Facing: South", robo2.currentStateOfTheRobot());
-
-
-        robo2.turnRight();
-        assertEquals("Position: 2, 1 - Pen: Down - Facing: West", robo2.currentStateOfTheRobot());
-    }
-
-    /*
-     Test Function: 16
-     Test type : Functional, blackbox
-     Input : <Robot(n) 1 move(s) 1 Robot(n) 0 move(s) 0 Robot(n) -1>.
-     Description : Robot() tested with multiple sizes and try invalid size -1, 1, 0 and move in them
-     Expected output : < size 1, Exception -1, Room size 0>
-     Tester : Nicholas Kawwas
-     Date : March 31th
-     */
-    @Test
-    @DisplayName("Robot() Constructor with Different Sizes")
-    void robotConstructorDiffSizes() throws Exception {
-        robo2 = new Robot(0);
-        robo2.move(0); // Crashes, code should handle no movement here but doesn't
-
-        robo2 = new Robot(1);
-        robo2.move(1); // Crashes, code should handle movement to edge here but doesn't
-
-        try {
-            robo2 = new Robot(-1);
-        } catch (Exception e) {
-            assertEquals("-1", e.getMessage());
-        }
     }
 }
