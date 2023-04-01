@@ -634,4 +634,67 @@ public class WhiteBoxTesting {
         // If, While - F
         robo2.move(0);
     }
+
+    /*
+    Test Function: 24
+    Test type : Structural, whitebox
+    Input : <Robot(n) 5 turnRight() turnLeft() printBoard() setPenDown() getPenIsDown() move(s) 3 turnRight() printBoard() turnRight() printBoard()>.
+    Description : Print Board in Every Direction with Marked States plus testing pen states and ability to turn
+    Expected output : < 1, 0, Printed board, true, board, 1, 2, false, board, true, board >
+    Tester : Nicholas Kawwas
+    Date : March 31th
+    */
+    @Test
+    @DisplayName("Print Board in Every Direction with Marked States")
+    void printBoardOutOfBounds() throws Exception {
+        robo2 = new Robot(5);
+
+        // Turn left and right, back to starting position
+        assertEquals(1, robo2.turnRight());
+        assertEquals(0, robo2.turnLeft());
+
+        // Direction = 0
+        // Else if - F
+        assertEquals(".\t.\t.\t.\t.\t\n" +
+                ".\t.\t.\t.\t.\t\n" +
+                ".\t.\t.\t.\t.\t\n" +
+                ".\t.\t.\t.\t.\t\n" +
+                "↑\t.\t.\t.\t.\t\n", robo2.printBoard());
+
+        // Direction = 1
+        // Else if - T
+        robo2.setPenDown();
+        assertEquals(true, robo2.getPenIsDown());
+
+        robo2.move(3);
+        assertEquals(1, robo2.turnRight());
+        assertEquals(".\t.\t.\t.\t.\t\n" +
+                "→\t.\t.\t.\t.\t\n" +
+                "*\t.\t.\t.\t.\t\n" +
+                "*\t.\t.\t.\t.\t\n" +
+                "*\t.\t.\t.\t.\t\n", robo2.printBoard());
+
+
+        // Turn backward and reset pen
+        assertEquals(2, robo2.turnRight());
+
+        // Direction = 2
+        // Else if - F
+        robo2.setPenUp();
+        assertEquals(false, robo2.getPenIsDown());
+
+        assertEquals(".\t.\t.\t.\t.\t\n" +
+                "↓\t.\t.\t.\t.\t\n" +
+                "*\t.\t.\t.\t.\t\n" +
+                "*\t.\t.\t.\t.\t\n" +
+                "*\t.\t.\t.\t.\t\n", robo2.printBoard());
+
+        // Direction = 3
+        assertEquals(3, robo2.turnRight());
+        assertEquals(".\t.\t.\t.\t.\t\n" +
+                "←\t.\t.\t.\t.\t\n" +
+                "*\t.\t.\t.\t.\t\n" +
+                "*\t.\t.\t.\t.\t\n" +
+                "*\t.\t.\t.\t.\t\n", robo2.printBoard());
+    }
 }
