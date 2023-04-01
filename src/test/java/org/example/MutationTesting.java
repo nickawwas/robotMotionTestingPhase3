@@ -1,10 +1,8 @@
 package org.example;
 
-import org.example.Robot;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class MutationTesting {
 
@@ -20,10 +18,9 @@ public class MutationTesting {
         Robot robot = new Robot(1);
         try {
             robot.move(1);
+            fail("Exception expected was not thrown.");
         } catch (Exception e) {
-            String expectedMessage = "Movement request would make the robot fall off the board.";
-            String receivedMessage = e.getMessage();
-            assertTrue(receivedMessage.contains(expectedMessage));
+            assertEquals("Movement request would make the robot fall off the board.", e.getMessage());
         }
     }
 
@@ -40,10 +37,9 @@ public class MutationTesting {
         robot.turnRight();
         try {
             robot.move(1);
+            fail("Exception expected was not thrown.");
         } catch (Exception e) {
-            String expectedMessage = "Movement request would make the robot fall off the board.";
-            String receivedMessage = e.getMessage();
-            assertTrue(receivedMessage.contains(expectedMessage));
+            assertEquals("Movement request would make the robot fall off the board.", e.getMessage());
         }
     }
 
@@ -61,10 +57,9 @@ public class MutationTesting {
         robot.turnRight();
         try {
             robot.move(1);
+            fail("Exception expected was not thrown.");
         } catch (Exception e) {
-            String expectedMessage = "Movement request would make the robot fall off the board.";
-            String receivedMessage = e.getMessage();
-            assertTrue(receivedMessage.contains(expectedMessage));
+            assertEquals("Movement request would make the robot fall off the board.", e.getMessage());
         }
     }
 
@@ -81,10 +76,9 @@ public class MutationTesting {
         robot.turnLeft();
         try {
             robot.move(1);
+            fail("Exception expected was not thrown.");
         } catch (Exception e) {
-            String expectedMessage = "Movement request would make the robot fall off the board.";
-            String receivedMessage = e.getMessage();
-            assertTrue(receivedMessage.contains(expectedMessage));
+            assertEquals("Movement request would make the robot fall off the board.", e.getMessage());
         }
     }
 
@@ -104,7 +98,6 @@ public class MutationTesting {
         robot.turnRight();
         robot.turnRight();
         assertArrayEquals(expectedCoordinatesSouth, robot.move(1));
-
     }
 
     // Tester: Matthew Sklivas

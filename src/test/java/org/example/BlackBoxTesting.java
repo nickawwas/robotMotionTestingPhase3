@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 
 import java.io.ByteArrayInputStream;
@@ -184,16 +185,17 @@ class BlackBoxTesting {
     /*
      Test Function: 4
      Test type : Functional, blackbox
-     Input : <i 10, Please enter a command.", "i 100, Please enter a command.", "50 i, Error.", "i -1, Error.", "i --10, Error.", "100, Error.", "i 501, 500">.
+     Input : <i 10, Please enter a command.", "i 5 i 1, Invalid initialization", "50 i, Error.", "i -1, Error.", "i --10, Error.", "100, Error.", "i 5 i 501">.
      Description : Test different input types for initialization command
-     Expected output : <Please enter a command.", "Please enter a command.", "Error.", "Error.", "Error.", "Error.", "500" >
+     Expected output : <Please enter a command.", "Invalid initialization", "Error.", "Error.", "Error.", "Error.", "Invalid initialization" >
      Tester : Nicholas Harris
      Date : March 30th
      */
     @ParameterizedTest
-    @CsvSource({"i 10, Please enter a command.", "i 100, Please enter a command.", "50 i, Error.", "i -1, Error.", "i --10, Error.", "100, Error.", "i 501, 500"})
+    @CsvSource({"i 10, Please enter a command.", "i 5 i 1, Invalid initialization", "50 i, Error", "i -1, Error", "i --10, Error", "100, Error.", "i 5 i 501, Invalid initialization"})
     @DisplayName("Test Initialization Command")
     void initializationTest(String input, String expected) {
+        input = input.replace("i", "\ni");
         final String test = input + "\nq";
         provideInput(test);
         Main.main(new String[0]);
@@ -250,14 +252,14 @@ class BlackBoxTesting {
     /*
      Test Function: 7
      Test type : Functional, blackbox
-     Input : <"d", "d 10", "d 100n", "C", " D", " D", "D">.
+     Input : <"d", "d 10", "dd", "C", " D", " D", "D">.
      Description : Test pen down command input
      Expected output : <"Pen: Down", "Pen: Down", "Pen: Down", "Pen: Up", " Pen: Down", " Pen: Down", "Pen: Down">
      Tester : Nicholas Harris
      Date : March 30th
     */
     @ParameterizedTest
-    @CsvSource({"d, Pen: Down", "d 10, Pen: Down", "d 100, Pen: Down", "C, Pen: Up", " D, Pen: Down", " D, Pen: Down", "D, Pen: Down"})
+    @CsvSource({"d, Pen: Down", "d 10, Pen: Down", "dd, Pen: Down", "C, Pen: Up", " D, Pen: Down", " D, Pen: Down", "D, Pen: Down"})
     @DisplayName("Test Pen Down Command")
     void penDownTest(String input, String expected) {
         String test = "";
@@ -397,6 +399,26 @@ class BlackBoxTesting {
     void printBoardTest2(String input, String expected) {
         input = input.replace("P", "\np\n");
 
+        provideInput(input);
+        Main.main(new String[0]);
+        assertTrue(getOutput().contains(expected), getOutput());
+    }
+
+    /*
+     Test Function: 14
+     Test type : Functional, blackbox
+     Input : <"e", "O", "z", "342", "C50", "p26", "i e", "-502", "-ee">.
+     Description : Test invalid commands
+     Expected output : <"The command you have entered is not valid, please re-enter a valid command.">
+     Tester : Nicholas Harris
+     Date : March 30th
+    */
+    @ParameterizedTest
+    @ValueSource(strings={"e", "O", "z", "342", "C50", "p26", "i e", "-502", "-ee.", ".,?!11@#$"})
+    @DisplayName("Test Print Board Command")
+    void testInvalidCommands(String input) {
+        String expected = "The command you have entered is not valid, please re-enter a valid command.";
+        input = "i 5\n" + input + "\nq";
         provideInput(input);
         Main.main(new String[0]);
         assertTrue(getOutput().contains(expected), getOutput());
