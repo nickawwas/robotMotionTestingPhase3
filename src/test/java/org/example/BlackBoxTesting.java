@@ -47,8 +47,8 @@ class BlackBoxTesting {
     /*
      Test Function: 1
      Test type : Functional, blackbox
-     Input : <Room(n) 10 printFloor() movePen() true moveRobot(movesNorth) 4 setRobotDirection(dir) 1 moveRobot(movesEast) 2 printFloor()>.
-     Description : Print default and changed room floor line by line
+     Input : <>.
+     Description : Move robot in all directions
      Expected output : < Default empty room floor, Modified room floor >
      Tester : Nicholas Harris
      Date : March 30th
@@ -163,7 +163,7 @@ class BlackBoxTesting {
                      "*\t.\t.\t.\t\n" +
                      "*\t.\t.\t.\t\n", robot.printBoard());
 
-        
+
         assertEquals(2, robot.turnRight());
 
         assertEquals(".\t.\t.\t.\t\n" +
@@ -185,21 +185,21 @@ class BlackBoxTesting {
     /*
      Test Function: 4
      Test type : Functional, blackbox
-     Input : <i 10, Please enter a command.", "i 5 i 1, Invalid initialization", "50 i, Error.", "i -1, Error.", "i --10, Error.", "100, Error.", "i 5 i 501">.
+     Input : <"i 10", "i 5 i 1", "50 i", "i -1", "i --10", "100", "i 5 i 501">.
      Description : Test different input types for initialization command
      Expected output : <Please enter a command.", "Invalid initialization", "Error.", "Error.", "Error.", "Error.", "Invalid initialization" >
      Tester : Nicholas Harris
      Date : March 30th
      */
     @ParameterizedTest
-    @CsvSource({"i 10, Please enter a command.", "i 5 i 1, Invalid initialization", "50 i, Error", "i -1, Error", "i --10, Error", "100, Error.", "i 5 i 501, Invalid initialization"})
+    @CsvSource({"i 10, Please enter a command.", "i 5 i 1, Please enter a command.", "50 i, Error", "i -1, Error", "i --10, Error", "100, Error.", "i 5 i 501, Invalid initialization"})
     @DisplayName("Test Initialization Command")
     void initializationTest(String input, String expected) {
         input = input.replace("i", "\ni");
         final String test = input + "\nq";
         provideInput(test);
         Main.main(new String[0]);
-        assertTrue(getOutput().contains(expected), getOutput());
+        assertTrue(getOutput().contains(expected));
     }
 
 
@@ -213,7 +213,7 @@ class BlackBoxTesting {
      Date : March 30th
     */
     @ParameterizedTest
-    @CsvSource({"c, Position: 0, 0 - Pen: up - Facing: north", "c 10, Position: 0, 0 - Pen: Up - Facing: North", "10 c, Error.", "C, Position: 0, 0 - Pen: up - Facing: north", "m 2 c, Position: 0, 2 - Pen: up - Facing: north", "d c, Position: 0, 0 - Pen: down - Facing: north.", "r, c, Position: 0, 0 - Pen: up - Facing: east"})
+    @CsvSource({"c, Position: 0, 0 - Pen: up - Facing: north", "c 10, Position: 0, 0 - Pen: Up - Facing: North", "10 c, not valid", "C, Position: 0, 0 - Pen: up - Facing: north", "m 2 c, Position: 0, 2 - Pen: up - Facing: north", "d c, Position: 0, 0 - Pen: down - Facing: north.", "r, c, Position: 0, 0 - Pen: up - Facing: east"})
     @DisplayName("Test print position Command")
     void printPositionTest(String input, String expected) {
         String test = "";
@@ -223,7 +223,7 @@ class BlackBoxTesting {
     
         provideInput(test);
         Main.main(new String[0]);
-        assertTrue(getOutput().contains(expected), getOutput());
+        assertTrue(getOutput().contains(expected));
     }
 
     /*
@@ -245,7 +245,7 @@ class BlackBoxTesting {
     
         provideInput(test);
         Main.main(new String[0]);
-        assertTrue(getOutput().contains(expected), getOutput());
+        assertTrue(getOutput().contains(expected));
     }
 
 
@@ -269,7 +269,7 @@ class BlackBoxTesting {
     
         provideInput(test);
         Main.main(new String[0]);
-        assertTrue(getOutput().contains(expected), getOutput());
+        assertTrue(getOutput().contains(expected));
     }
 
     /*
@@ -292,7 +292,7 @@ class BlackBoxTesting {
     
         provideInput(test);
         Main.main(new String[0]);
-        assertTrue(getOutput().contains(expected), getOutput());
+        assertTrue(getOutput().contains(expected));
     }
 
     /*
@@ -316,7 +316,7 @@ class BlackBoxTesting {
     
         provideInput(test);
         Main.main(new String[0]);
-        assertTrue(getOutput().contains(expected), getOutput());
+        assertTrue(getOutput().contains(expected));
     }
 
     /*
@@ -339,7 +339,7 @@ class BlackBoxTesting {
     
         provideInput(test);
         Main.main(new String[0]);
-        assertTrue(getOutput().contains(expected), getOutput());
+        assertTrue(getOutput().contains(expected));
     }
 
     /*
@@ -361,7 +361,7 @@ class BlackBoxTesting {
     
         provideInput(test);
         Main.main(new String[0]);
-        assertTrue(getOutput().contains(expected), getOutput());
+        assertTrue(getOutput().contains(expected));
     }
 
     /*
@@ -381,7 +381,7 @@ class BlackBoxTesting {
 
         provideInput(input);
         Main.main(new String[0]);
-        assertTrue(getOutput().contains(expected), getOutput());
+        assertTrue(getOutput().contains(expected));
     }
 
     /*
@@ -395,13 +395,13 @@ class BlackBoxTesting {
     */
     @ParameterizedTest
     @CsvSource({"i 3Pq, .\t.\t.\t\n↑\t.\t.\t\n.\t.\t.\t\n"})
-    @DisplayName("Test Print Board Command")
+    @DisplayName("Test Print Board Command 2")
     void printBoardTest2(String input, String expected) {
         input = input.replace("P", "\np\n");
 
         provideInput(input);
         Main.main(new String[0]);
-        assertTrue(getOutput().contains(expected), getOutput());
+        assertTrue(getOutput().contains(expected));
     }
 
     /*
@@ -415,12 +415,12 @@ class BlackBoxTesting {
     */
     @ParameterizedTest
     @ValueSource(strings={"e", "O", "z", "342", "C50", "p26", "i e", "-502", "-ee.", ".,?!11@#$"})
-    @DisplayName("Test Print Board Command")
+    @DisplayName("Test Invalid Commands")
     void testInvalidCommands(String input) {
         String expected = "The command you have entered is not valid, please re-enter a valid command.";
         input = "i 5\n" + input + "\nq";
         provideInput(input);
-        Main.main(new String[0]);
-        assertTrue(getOutput().contains(expected), getOutput());
+        Main.main(new String[0])
+        assertTrue(getOutput().contains(expected));
     }
 }
