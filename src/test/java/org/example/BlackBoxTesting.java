@@ -17,9 +17,7 @@ import java.io.PrintStream;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BlackBoxTesting {
-
     private final Robot robot = new Robot(4);
-
     private final InputStream systemIn = System.in;
     private final PrintStream systemOut = System.out;
     private ByteArrayInputStream testIn;
