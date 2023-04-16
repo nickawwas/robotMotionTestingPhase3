@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1279412-bb4f-4e74-8bbd-3f76e772c75f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/MutationTesting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/MutationTesting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/pit-reports/202303302033/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/pit-reports/202303302033/org.example/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/pit-reports/202303302033/org.example/robot.java.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/pit-reports/202303302033/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/example/MutationTesting.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/example/MutationTesting.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/BlackBoxTesting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/BlackBoxTesting.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,16 +50,14 @@
       <recent name="org.example" />
     </key>
   </component>
-  <component name="RunManager" selected="Maven.mutation-testing [clean,test]">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.BlackBoxTesting">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -76,6 +66,21 @@
       <module name="robotMotionTestingPhase3" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BlackBoxTesting" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="robotMotionTestingPhase3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.BlackBoxTesting" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -146,9 +151,11 @@
       <item itemvalue="JUnit.DataFlowTesting" />
       <item itemvalue="Maven.mutation-testing [clean,test]" />
       <item itemvalue="Maven.test [clean,install]" />
+      <item itemvalue="JUnit.BlackBoxTesting" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BlackBoxTesting" />
         <item itemvalue="JUnit.All in robotMotionTestingPhase3" />
         <item itemvalue="JUnit.DataFlowTesting" />
       </list>
@@ -172,7 +179,15 @@
       <workItem from="1680198867465" duration="1510000" />
       <workItem from="1680200633223" duration="229000" />
       <workItem from="1680200879250" duration="3679000" />
-      <workItem from="1680285813747" duration="4929000" />
+      <workItem from="1680285813747" duration="5699000" />
+      <workItem from="1680543776392" duration="731000" />
+      <workItem from="1680553315195" duration="48000" />
+      <workItem from="1680555127348" duration="21000" />
+      <workItem from="1681513609403" duration="50000" />
+      <workItem from="1681514227951" duration="25000" />
+      <workItem from="1681531149577" duration="4000" />
+      <workItem from="1681531215751" duration="606000" />
+      <workItem from="1681678716468" duration="339000" />
     </task>
     <servers />
   </component>

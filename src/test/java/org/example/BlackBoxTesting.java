@@ -418,7 +418,7 @@ class BlackBoxTesting {
         String expected = "The command you have entered is not valid, please re-enter a valid command.";
         input = "i 5\n" + input + "\nq";
         provideInput(input);
-        Main.main(new String[0])
+        Main.main(new String[0]);
         assertTrue(getOutput().contains(expected));
     }
 }
